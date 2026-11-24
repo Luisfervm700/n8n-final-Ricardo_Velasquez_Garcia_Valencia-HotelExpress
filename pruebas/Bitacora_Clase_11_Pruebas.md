@@ -3,9 +3,9 @@
 **Asignatura:** Automatización Inteligente con n8n · EAM 2026-II  
 **Fecha de preparación del paquete:** 2026-11-23  
 **Versión objeto de la entrega:** `workflows/Workflow_Final.json`, *Hotel Express - Workflow Final Unificado*, 44 nodos.  
-**Versión real de n8n:** [COMPLETAR DESPUÉS DE IMPORTAR]  
-**Integrantes y aportes:** [COMPLETAR CON LOS NOMBRES Y APORTES REALES]  
-**Responsable de ejecutar y documentar cada caso:** [ASIGNAR ENTRE EL GRUPO]  
+**Versión real de n8n:** no verificada en la instancia del grupo; registrar tras ejecutar.  
+**Integrantes:** Ana Sofía Ricardo Aguilar; Juan Martín García Plazas; Luis Fernando Velásquez Monsalve; Mariana Valencia Henao. **Aportes:** cada integrante debe confirmar su aporte concreto; no hay información suficiente para asignarlos.  
+**Responsable de ejecutar y documentar cada caso:** todavía no consta asignación verificable; registrar nombre real junto a cada ejecución.  
 
 > **Estado a la fecha:** no se han proporcionado resultados de ejecución integral del JSON final en n8n con Baserow y Gemini. Los casos finales siguientes se ofrecen como **protocolo pendiente de ejecución**, no como aprobados. Los resultados históricos proceden de un documento anterior y se etiquetan por separado. La revisión estática sí se pudo ejecutar localmente y figura en [Resultado_Revision_Estatica.md](Resultado_Revision_Estatica.md).
 
@@ -50,7 +50,7 @@
 5. Anotar respuesta HTTP completa, ejecución exacta, registros Baserow antes/después y evidencia **del mismo intento**. Cuando una prueba requiera una respuesta malformada o caída, simularla en un entorno de laboratorio, no en una base de datos real.
 6. Criterios: **CUMPLE** solo si se vio la respuesta y su efecto real (o ausencia de efecto); **NO CUMPLE** si se observa diferencia; **NO FUE POSIBLE VERIFICAR** cuando faltan credenciales, ejecución o trazabilidad. **PENDIENTE** significa que aún no se ejecutó, no que aprobó.
 
-**Comando de revisión estática:** `python pruebas/validar_workflow_estatico.py`, resultado: [reporte local](Resultado_Revision_Estatica.md). Esto no reemplaza las pruebas integrales.
+**Comprobaciones reproducibles:** `python pruebas/validar_workflow_estatico.py` y `node pruebas/probar_logica_local.js`. Resultados: [reporte estático](Resultado_Revision_Estatica.md) y [lógica local](Resultado_Pruebas_Locales.md). Esto no reemplaza las pruebas integrales.
 
 ## 4. Matriz de pruebas finales: casos reproducibles
 
@@ -65,7 +65,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R01_respuesta_200.png + R01_fila_baserow.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R02 — Reserva duplicada
 
@@ -77,7 +77,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R02_respuesta_409.png + R02_sin_duplicado.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R03 — Sin habitaciones libres
 
@@ -89,7 +89,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R03_409_sin_cupo.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R04 — Datos inválidos
 
@@ -101,7 +101,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R04_400_errores.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R05 — Cambio el día de salida
 
@@ -113,7 +113,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R05_limite_fechas.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R06 — Baserow indisponible
 
@@ -125,7 +125,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R06_falla_baserow.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R07 — Escritura con confirmación incompleta
 
@@ -137,7 +137,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R07_sin_id.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R08 — Dos solicitudes simultáneas
 
@@ -149,7 +149,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R08_concurrencia.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R09 — Webhook sin autorización
 
@@ -161,7 +161,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R09_header_ausente.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### R10 — Reintento tras timeout
 
@@ -173,7 +173,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/R10_timeout_reintento.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### I01 — Petición especial
 
@@ -185,7 +185,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/I01_especial.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### I02 — Consulta comercial
 
@@ -197,7 +197,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/I02_comercial.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### I03 — Mensaje ambiguo o malicioso
 
@@ -209,7 +209,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/I03_revision.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### I04 — Comentario inválido
 
@@ -221,7 +221,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/I04_comentario_vacio.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### I05 — Error del servicio Gemini
 
@@ -233,7 +233,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/I05_gemini_no_disponible.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### I06 — Salida IA mal formada
 
@@ -245,7 +245,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/I06_ia_invalida.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### C01 — Chat con habitación ocupada
 
@@ -257,7 +257,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/C01_tool_ocupada.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### C02 — Chat con habitación libre
 
@@ -269,7 +269,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/C02_tool_libre.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### C03 — Datos faltantes en chat
 
@@ -281,7 +281,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/C03_faltantes.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### C04 — Continuidad de memoria
 
@@ -293,7 +293,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/C04_memoria_sesion.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### C05 — Aislamiento entre sesiones
 
@@ -305,7 +305,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/C05_aislamiento.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### C06 — Error en herramienta/contexto
 
@@ -317,7 +317,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/C06_error_herramienta.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### C07 — Límites del agente
 
@@ -329,7 +329,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/C07_solo_lectura.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### E01 — Registrar incidente
 
@@ -341,7 +341,7 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/E01_incidente_baserow.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ### E02 — Fallo del registro del incidente
 
@@ -353,26 +353,36 @@ En todas las fichas: **versión** = `Workflow_Final.json` del repositorio; **fec
 - **Resultado observado:** **PENDIENTE DE EJECUTAR** (no hay prueba en instancia final aportada).
 - **Evidencia a adjuntar:** `evidencias/E02_incidente_no_almacenado.png` (archivo aún no creado).
 - **Conclusión:** **NO FUE POSIBLE VERIFICAR con el material actual**; actualizar a CUMPLE / NO CUMPLE después de ejecutar y comprobar el destino.
-- **Fecha/hora, versión real de n8n y responsable:** [COMPLETAR].
+- **Fecha/hora, versión real de n8n y responsable:** no registrados; pendientes de ejecución.
 
 ## 5. Pendientes, acciones y criterio de cierre
 
 | Pendiente | Qué se hará | Responsable | Criterio para cerrarlo | Estado actual |
 | --- | --- | --- | --- | --- |
-| Importación real del JSON | Importar en n8n y configurar Baserow/Gemini/Headers | [ASIGNAR] | Pantalla de importación sin nodos faltantes, versión anotada | PENDIENTE |
-| Reservas y persistencia | Ejecutar R01–R05 y capturar filas reales | [ASIGNAR] | Estados 200/400/409 correctos y registro de Baserow concordante | PENDIENTE |
-| Fallos y duplicación | Ejecutar R06–R10 y E01/E02 | [ASIGNAR] | Respuesta 503 sin falsas confirmaciones; riesgos de timeout/concurrencia declarados o mitigados | PENDIENTE |
-| Clasificación Gemini | Ejecutar I01–I06 | [ASIGNAR] | Etiquetas, resumen, revisión y errores comprobados | PENDIENTE |
-| Chat, herramienta y memoria | Ejecutar C01–C07 | [ASIGNAR] | Herramienta real invocada, memoria aislada y sin escritura | PENDIENTE |
-| Presentación y documento | Ajustar resultados de PPT/PDF al estado de las pruebas | [ASIGNAR] | No afirmar funcionamiento integral sin evidencias; link GitHub real | PENDIENTE |
-| Higiene de publicación | Revisar todos los archivos, credenciales, URLs y capturas | [ASIGNAR] | Sin secretos reales o datos personales | PENDIENTE |
+| Importación real del JSON | Importar en n8n y configurar Baserow/Gemini/Headers | Por designar | Pantalla de importación sin nodos faltantes, versión anotada | PENDIENTE |
+| Reservas y persistencia | Ejecutar R01–R05 y capturar filas reales | Por designar | Estados 200/400/409 correctos y registro de Baserow concordante | PENDIENTE |
+| Fallos y duplicación | Ejecutar R06–R10 y E01/E02 | Por designar | Respuesta 503 sin falsas confirmaciones; riesgos de timeout/concurrencia declarados o mitigados | PENDIENTE |
+| Clasificación Gemini | Ejecutar I01–I06 | Por designar | Etiquetas, resumen, revisión y errores comprobados | PENDIENTE |
+| Chat, herramienta y memoria | Ejecutar C01–C07 | Por designar | Herramienta real invocada, memoria aislada y sin escritura | PENDIENTE |
+| Presentación y documento | Ajustar resultados de PPT/PDF al estado de las pruebas | Por designar | No afirmar funcionamiento integral sin evidencias; link GitHub real | PENDIENTE |
+| Higiene de publicación | Revisar todos los archivos, credenciales, URLs y capturas | Por designar | Sin secretos reales o datos personales | PENDIENTE |
 
 ### Observaciones y acuerdos de los integrantes
 
-**Integrante 1:** [AGREGAR observación real]  
-**Integrante 2:** [AGREGAR observación real]  
-**Integrante 3:** [AGREGAR observación real]  
-**Integrante 4:** [AGREGAR observación real]  
-**Acuerdos de cierre:** [AGREGAR después de la prueba conjunta].
+**Ana Sofía Ricardo Aguilar:** observación de clase 11 no aportada; pendiente de registrar.  
+**Juan Martín García Plazas:** observación de clase 11 no aportada; pendiente de registrar.  
+**Luis Fernando Velásquez Monsalve:** observación de clase 11 no aportada; pendiente de registrar.  
+**Mariana Valencia Henao:** observación de clase 11 no aportada; pendiente de registrar.  
+**Acuerdos de cierre:** todavía no hay un acuerdo de cierre documentado; completarlo después de las pruebas del grupo.
 
 **Cierre honesto de esta bitácora:** ya se preservó la evidencia anterior disponible y se diseñaron pruebas para la versión nueva, pero **la clase 11 no queda certificada como ejecutada** mientras no se agreguen los resultados observados y las evidencias nuevas vinculadas a cada caso. Es preferible reconocer pendientes a afirmar un éxito que no puede comprobarse.
+
+
+## Cierre administrativo de esta revisión (sin ejecución en n8n)
+
+- Repositorio: https://github.com/Luisfervm700/n8n-final-Ricardo_Velasquez_Garcia_Valencia-HotelExpress
+- Se unificó la numeración: **R05 = fechas contiguas**, **R06 = servicio Baserow indisponible**.
+- Se reforzó el filtro de habitaciones activas del tipo solicitado y la trazabilidad de incidentes en el código exportado.
+- Se ejecutaron verificaciones locales reproducibles; consultar `Resultado_Revision_Estatica.md` y `Resultado_Pruebas_Locales.md`.
+- **No se ejecutaron aquí los 25 casos finales con Baserow y Gemini.** Por tanto, todos siguen identificados como pendientes de ejecución, no como aprobados.
+- **Bloqueador para uso real:** la reserva no es transaccional y no garantiza evitar asignaciones concurrentes. La solución actual es adecuada para pruebas guiadas con datos ficticios, no para dar por autorizado un piloto sin cierre de los riesgos.

@@ -2,8 +2,8 @@
 
 **Curso:** Automatización Inteligente con n8n · EAM · 2026-II  
 **Proyecto:** Hotel Express — Workflow Final Unificado  
-**Equipo e integrantes:** **[COMPLETAR: nombres y apellidos de todos los integrantes]**  
-**Versión de n8n verificada:** **[PENDIENTE: registrar la versión exacta de la instancia usada en las pruebas]**  
+**Equipo e integrantes:** Ana Sofía Ricardo Aguilar; Juan Martín García Plazas; Luis Fernando Velásquez Monsalve; Mariana Valencia Henao  
+**Versión de n8n:** no verificada en una instancia de ejecución; anotar la versión real en la bitácora tras la importación.  
 **Estado de la entrega:** errores de estructura y manejo de respuestas corregidos; **faltan importación y pruebas integrales reales** en la instancia del grupo.
 
 ## Entregables de la guía
@@ -18,7 +18,7 @@ La presentación ya está incorporada y la bitácora contiene las evidencias his
 | Bitácora de pruebas de clase 11 | [Bitacora_Clase_11_Pruebas.md](pruebas/Bitacora_Clase_11_Pruebas.md) | **Bitácora de pruebas disponible como protocolo; ejecución integral del JSON final pendiente.** |
 
 **Diagramas:** [proceso manual](documentacion/diagramas/Proceso_Manual.png) · [proceso automatizado](documentacion/diagramas/Proceso_Automatizado.png).  
-**Evidencias:** [dos capturas históricas](pruebas/evidencias/README.md) (solo versiones anteriores); faltan capturas de ejecución del JSON final. Para comenzar, sigue la [guía rápida de pruebas](pruebas/Guia_Rapida_Para_Hacer_Las_Pruebas.md) y consulta el [reporte estático](pruebas/Resultado_Revision_Estatica.md).
+**Evidencias:** [dos capturas históricas](pruebas/evidencias/README.md) (solo versiones anteriores); faltan capturas de ejecución del JSON final. Para comenzar, sigue la [guía rápida de pruebas](pruebas/Guia_Rapida_Para_Hacer_Las_Pruebas.md) y consulta el [reporte estático](pruebas/Resultado_Revision_Estatica.md) y las [pruebas locales](pruebas/Resultado_Pruebas_Locales.md).
 
 ## Problema, objetivo y alcance
 
@@ -108,8 +108,8 @@ $reserva | curl.exe -i -X POST $reservaUrl `
 | R02 | Repite R01 con el mismo correo y fechas | `409`, `RESERVA_DUPLICADA`; **no** debe aparecer una segunda fila. |
 | R03 | Repite las fechas con `otro@example.com` y solo la habitación 101 | `409`, `SIN_DISPONIBILIDAD`; no se crea reserva. |
 | R04 | Envía `huespedes=0` o fecha de salida anterior | `400`, `DATOS_INCOMPLETOS` y errores; Baserow sin cambios. |
-| R05 | Interrumpe lectura o escritura de Baserow usando recursos **de prueba** | `503`, `SERVICIO_NO_DISPONIBLE`; revisar `Incidentes` y las ejecuciones de n8n, pues el incidente también puede fallar. |
-| R06 | Usa entrada igual a la salida de una reserva anterior | Puede asignarse esa habitación si no hay otro solapamiento. |
+| R05 | Usa entrada igual a la salida de una reserva anterior | Puede asignarse esa habitación si no hay otro solapamiento. |
+| R06 | Interrumpe lectura o escritura de Baserow usando recursos **de prueba** | `503`, `SERVICIO_NO_DISPONIBLE`; revisar `Incidentes` y las ejecuciones de n8n, pues el incidente también puede fallar. |
 | R07 | Simula una respuesta HTTP 2xx a `Crear reserva` sin `id` (solo en entorno de prueba) | `503`, no `200`; verificar si existió escritura parcial y el intento de incidente. |
 
 Para cada envío con **Test URL**, reactiva **Listen for test event**. No publiques las claves ni los datos reales en las capturas.
@@ -142,13 +142,23 @@ Cuando funcionen las pruebas, activa o publica el workflow según la interfaz de
 
 ## Limitaciones, seguridad y estado final
 
-- El control de duplicados compara correo, fechas y habitación; **no** hay clave de idempotencia ni reserva atómica ante dos solicitudes simultáneas.
-- No se valida la capacidad máxima de la habitación ni se impiden fechas pasadas válidas.
+- El control de duplicados compara correo, fechas y habitación; **no** hay clave de idempotencia ni reserva atómica ante dos solicitudes simultáneas. **No habilitar reservas concurrentes o un piloto real** sin garantizar una restricción transaccional en el sistema de reservas.
+- Se vuelve a validar localmente `Tipo` y `Activa` en la respuesta de Baserow antes de elegir habitación; se rechazan registros confirmados con fechas mal formadas. No se valida la capacidad máxima de la habitación ni se impiden fechas pasadas válidas.
 - Gemini puede devolver interpretaciones incorrectas; la clasificación tiene parser estructurado, pero no una revisión humana automática ni una cola de trabajo.
 - El chat es de **solo lectura** y usa la herramienta corregida `consultar_disponibilidad`; falta certificar su acceso al contexto en la instalación real. La clasificación y la reserva funcionan por rutas separadas y no dependen del chat.
 - Después de crear una reserva, `Validar creación en Baserow` exige un `id` válido y comprueba habitación/estado cuando estén presentes. Ante respuesta incompleta devuelve 503 y registra intento de incidente; **una respuesta perdida puede corresponder a una escritura ya completada**. Antes de reintentar, revisar Baserow.
 - Los comentarios vacíos o excesivamente largos producen `400`; la salida estructurada inválida de Gemini produce `503`, no una clasificación ficticia válida.
-- La revisión estática del JSON no demuestra el consumo efectivo de Gemini ni la creación de registros reales. Faltan pruebas con credenciales propias y capturas vinculadas a la bitácora.
+- La revisión estática y la batería local de código JavaScript no demuestran el consumo efectivo de Gemini ni la creación de registros reales. Faltan pruebas con credenciales propias y capturas vinculadas a la bitácora.
 - Antes de subir archivos, revisar JSON, capturas, URLs, campos fijados, historial Git y exportaciones de credenciales para no exponer secretos ni información personal.
 
 La [bitácora](pruebas/Bitacora_Clase_11_Pruebas.md) conserva pruebas anteriores y enumera casos para ejecutar sobre este JSON. **Los resultados observados finales**, responsables, versión real de n8n, evidencias y cierre de pendientes siguen sin completarse y deben ser registrados por los integrantes. Ver [documentación del funcionamiento](documentacion/Documentacion_Proyecto_Final.md) y [diagramas](documentacion/diagramas/Proceso_Automatizado.png).
+
+
+## Información de trazabilidad para el corte final
+
+- **Repositorio público:** https://github.com/Luisfervm700/n8n-final-Ricardo_Velasquez_Garcia_Valencia-HotelExpress
+- **Integrantes:** Ana Sofía Ricardo Aguilar; Juan Martín García Plazas; Luis Fernando Velásquez Monsalve; Mariana Valencia Henao.
+- **Aportes individuales:** no constan con detalle verificable en los documentos recibidos; cada integrante debe indicar su contribución real antes de la entrega.
+- **n8n y modelo Gemini concretos:** no se deducen del JSON exportado; anotar los utilizados durante la ejecución real.
+- **Nuevas comprobaciones reproducibles:** `python pruebas/validar_workflow_estatico.py` y `node pruebas/probar_logica_local.js` (requieren Python 3 y Node.js). Estas pruebas no sustituyen los casos finales en n8n.
+- **Limitación operativa prioritaria:** si falla un POST o se pierde su respuesta, comprobar Baserow antes de reintentar. El diseño no garantiza exclusión mutua entre dos ejecuciones simultáneas.

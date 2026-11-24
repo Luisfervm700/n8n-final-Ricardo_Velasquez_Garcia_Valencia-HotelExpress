@@ -1,8 +1,8 @@
 # Documentación del proyecto final — Hotel Express
 
 **Asignatura:** Automatización Inteligente con n8n · EAM, 2026-II  
-**Integrantes y aportes:** **[PENDIENTE: incluir los nombres y apellidos de TODOS los integrantes, junto con el aporte de cada uno]**  
-**Versión efectiva de n8n:** **[PENDIENTE: registrar versión exacta tras importación y pruebas]**  
+**Integrantes:** Ana Sofía Ricardo Aguilar; Juan Martín García Plazas; Luis Fernando Velásquez Monsalve; Mariana Valencia Henao. **Aportes individuales:** pendientes de confirmar con cada integrante (el material aportado no permite asignarlos con certeza).  
+**Versión efectiva de n8n:** no verificada; se anotará al importar y ejecutar en la instancia del grupo.  
 **Artefacto de referencia:** [Workflow_Final.json](../workflows/Workflow_Final.json) · [README de instalación y pruebas](../README.md)
 
 > **Alcance de esta revisión:** se contrastaron las estructuras y el código del archivo JSON con esta documentación; no hubo acceso a la instancia del grupo, a su Baserow ni a Gemini. Los resultados reales y capturas de pruebas todavía no están aportados. Se diferencia explícitamente diseño, comportamiento esperado y evidencias no verificadas.
@@ -143,8 +143,23 @@ Eres el asistente del Hotel Express. SOLO informas sobre la disponibilidad de ha
 
 **Verificación documental/estática:** se revisaron la sintaxis del JSON, nodos, conexiones, código JavaScript, enlaces relativos y controles incorporados en esta versión corregida. Las simulaciones de código aislado no equivalen a una importación ni ejecución real del conjunto.
 
-**Pruebas de aceptación a ejecutar:** R01 reserva exitosa; R02 duplicado; R03 sin cupos; R04 validación; R05 fallo Baserow; R06 salida y nueva entrada el mismo día; I01 petición especial; I02 mensaje ambiguo; I03 fallo Gemini; I04 comentario vacío o excesivo (400); I05 salida de Gemini mal formada (503); C01 disponibilidad ocupada; C02 disponibilidad libre; C03 información incompleta, memoria; C04 fallo del contexto (sin inventar disponibilidad); R07 respuesta de creación sin ID; pruebas de acceso no autorizado, repetición y concurrencia cuando corresponda. Cada una debe quedar documentada con entrada exacta, precondiciones, esperado, resultado observado, criterio de aceptación, conclusión, evidencia y responsable.
+**Pruebas de aceptación a ejecutar (numeración de la bitácora):** R01 reserva; R02 duplicado; R03 ocupación; R04 datos inválidos; R05 fechas contiguas; R06 fallo de Baserow; R07 respuesta de creación sin ID; R08 concurrencia; R09 autenticación; R10 timeout y reintento. I01 petición especial; I02 consulta comercial; I03 mensaje ambiguo/malicioso; I04 comentario inválido; I05 fallo de Gemini; I06 salida IA mal formada. C01 chat ocupado; C02 chat libre; C03 datos faltantes; C04 continuidad de memoria; C05 separación de sesiones; C06 fallo de herramienta; C07 límites de solo lectura. E01 incidente; E02 fallo de registro de incidente. Registrar entrada exacta, condiciones, esperado, observado, evidencia, conclusión, versión y responsable.
 
-**Estado del paquete actualizado:** ya se incluye la [bitácora de clase 11](../pruebas/Bitacora_Clase_11_Pruebas.md), la [presentación final](../presentacion/Presentacion_Proyecto_Final.pdf) y dos [capturas de pruebas manuales anteriores](../pruebas/evidencias/README.md). Las capturas históricas corresponden a la arquitectura anterior y **no son evidencia de ejecución del JSON final**. Se adjunta una [guía para ejecutar los casos](../pruebas/Guia_Rapida_Para_Hacer_Las_Pruebas.md) y un [reporte de revisión estática](../pruebas/Resultado_Revision_Estatica.md). Faltan pruebas integrales observadas con Baserow y Gemini, sus evidencias, responsables y cierre; una vez disponibles, contrastar contra el JSON final, actualizar todo y volver a exportar desde n8n **la versión efectivamente comprobada**.
+**Estado del paquete actualizado:** ya se incluye la [bitácora de clase 11](../pruebas/Bitacora_Clase_11_Pruebas.md), la [presentación final](../presentacion/Presentacion_Proyecto_Final.pdf) y dos [capturas de pruebas manuales anteriores](../pruebas/evidencias/README.md). Las capturas históricas corresponden a la arquitectura anterior y **no son evidencia de ejecución del JSON final**. Se adjunta una [guía para ejecutar los casos](../pruebas/Guia_Rapida_Para_Hacer_Las_Pruebas.md) y un [reporte de revisión estática](../pruebas/Resultado_Revision_Estatica.md) y un [informe de pruebas locales de JavaScript](../pruebas/Resultado_Pruebas_Locales.md). Faltan pruebas integrales observadas con Baserow y Gemini, sus evidencias, responsables y cierre; una vez disponibles, contrastar contra el JSON final, actualizar todo y volver a exportar desde n8n **la versión efectivamente comprobada**.
 
 **Criterio de cierre:** no marcar el proyecto como completamente funcional hasta confirmar importación, credenciales, tres entradas, persistencia real de reservas e incidentes cuando aplique, clasificador Gemini, chat con herramienta, memoria por sesión, respuestas negativas y acceso a enlaces e imágenes desde GitHub.
+
+
+## 7. Aclaraciones posteriores a la auditoría
+
+**Repositorio público:** https://github.com/Luisfervm700/n8n-final-Ricardo_Velasquez_Garcia_Valencia-HotelExpress
+
+**Control del inventario antes de crear una reserva.** En `Determinar disponibilidad` ahora se filtran nuevamente, en JavaScript, las habitaciones por `Tipo` y `Activa`, y se exige `Numero` no vacío y sin duplicados entre las candidatas. El sistema valida la integridad de las reservas confirmadas antes de calcular cruces. Estos controles son revisables en el código y están comprobados localmente, pero sigue pendiente confirmar el comportamiento de Baserow en n8n.
+
+**Incidentes y trazabilidad.** El registro utiliza el identificador de ejecución como `Solicitud_Ref`, intenta recuperar el nombre del nodo anterior o del error y oculta correos y tokens comunes del texto del mensaje. `Ejecucion_URL` permanece vacía por no conocer la URL interna de la instalación. La escritura del incidente sigue dependiendo del mismo Baserow; si está caído puede fallar.
+
+**Memoria y herramienta.** El chat solo consulta; el agente debe llamar `consultar_disponibilidad` y nunca crear reservas. La herramienta obtiene el contexto preparado por un nodo anterior, cuya disponibilidad dentro del Code Tool **aún debe confirmarse** en la instalación de n8n. La memoria se configura por `sessionId`, pero el aislamiento entre usuarios es una hipótesis que necesita una prueba C05 con dos sesiones distintas.
+
+**Concurrencia e idempotencia.** La comprobación de duplicados ocurre antes de escribir y no constituye una operación atómica. Dos peticiones en paralelo pueden elegir la misma habitación. Para un piloto real se requiere serialización garantizada, bloqueo o una restricción transaccional en el servicio que crea reservas y una forma durable de conciliar timeouts. No se afirma haber cerrado este riesgo.
+
+**Pruebas y versiones.** El archivo final sigue requiriendo ejecutar R01–R10, I01–I06, C01–C07 y E01–E02 con evidencias. La revisión estática y las aserciones de JavaScript se ejecutan sin servicios externos: **no demuestran ejecución integral**. El proveedor indicado en el JSON es Google Gemini, pero el nombre del modelo depende de la credencial y selección real en la instalación.

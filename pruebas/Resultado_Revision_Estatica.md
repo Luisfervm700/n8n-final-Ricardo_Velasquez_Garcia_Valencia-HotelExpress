@@ -1,12 +1,14 @@
-# Revisión estática reproducible del Workflow Final
+# Revisión estática reproducible — Hotel Express
 
-**Fecha:** 2026-11-23. **Alcance:** lectura de JSON, referencias y sintaxis; no se accedió a n8n, Baserow o Gemini.
+Fecha: 2026-11-23. Comando: `python pruebas/validar_workflow_estatico.py`.
+
+**Alcance:** nodos, tipos, referencias, ausencia de subworkflows externos, sintaxis de JavaScript y búsqueda básica de secretos. **No acredita importación ni ejecución en n8n.**
 
 ```text
-Archivo: /mnt/data/HotelExpress_Entrega_Con_Pruebas/n8n-final-REEMPLAZAR_APELLIDOS-HotelExpress/workflows/Workflow_Final.json
-SHA256: f2f9cf05062054d3775e2be7da77fc06e6d3ff649b310aa44c8a3498310abe4b
-Nodos: 44 JS: 9 Conexiones: 46
-APROBADO: estructura y sintaxis verificables. NO constituye prueba de ejecución en n8n.
+Archivo: workflows/Workflow_Final.json
+SHA256: c974369428e4c94455cd7db65d0e116e69a3b869e93c17e8099832e53eb5a04e
+Nodos: 44; scripts JS: 9
+APROBADO (solo estructura y sintaxis). NO equivale a ejecución integral.
 ```
 
-**Conclusión:** cumple comprobaciones estáticas de este script. No autoriza marcar aprobados los casos de ejecución integral.
+**Conclusión:** la estructura y sintaxis pasan el verificador local; faltan las ejecuciones integrales reales, documentadas en la bitácora.
